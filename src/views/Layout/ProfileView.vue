@@ -90,13 +90,6 @@ function onImageSelected(event) {
     return
   }
 
-  const sizeMB = file.size / 1024 / 1024
-  if (sizeMB > maxSizeMB) {
-    snackbarMsg.value = `File size exceeds ${maxSizeMB}MB limit.`
-    snackbar.value = true
-    return
-  }
-
   selectedFile.value = file
 
   const reader = new FileReader()
@@ -248,8 +241,10 @@ function getEducationPlaceholder(index) {
               </div>
 
               <!-- Full Name -->
-              <h3 class="font-weight-medium mb-4">{{ fullName }}</h3>
-              <v-btn color="primary" class="mb-3" @click="dialog = true">Apply as Tutor?</v-btn>
+              <div class="d-flex flex-column align-center">
+                <h3 class="font-weight-medium mb-4">{{ fullName }}</h3>
+                <v-btn color="primary" class="mb-3" @click="dialog = true"> Apply as Tutor? </v-btn>
+              </div>
 
               <!-- Confirm Dialog -->
               <v-dialog
